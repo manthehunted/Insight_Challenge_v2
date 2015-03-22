@@ -29,6 +29,16 @@ def count_word(phrase, count):
                 count[word] += 1
     return count
 
+# find median of array
+def find_median(array):
+    length_array = len(array)
+    mid_index = (length_array-1)/2
+
+    if length_array%2 == 0:
+        return float(array[mid_index]+array[mid_index+1])/2
+    else:
+        return array[mid_index]
+    
 # track median
 def median_word(phrase, array):
     if phrase[0]:
@@ -36,8 +46,12 @@ def median_word(phrase, array):
     else:
         length_phrase = 0
         
-    array = np.append(array,length_phrase)
-    med = np.median(array)
+    array = np.sort(np.append(array,length_phrase))
+
+    med = find_median(array) 
+    
+    #sanity check
+#    med = np.median(array)
     
     return med, array
 
